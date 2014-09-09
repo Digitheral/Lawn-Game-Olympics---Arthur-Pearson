@@ -7,6 +7,9 @@ import java.util.Scanner;
 
 public class Main
 {
+    String[] EventName = {"Washoos", "Canjam", "Horseshoes","Cornhole","Ladderball", "Stickgame"}; // This array holds each game name for descriptions later.
+    String [][] OlympianData = {}; // For olympian data in the olympian method.
+
     // Main Method for Splash Screen
     public static void main(String[] args)
     {
@@ -20,28 +23,29 @@ public class Main
         Scanner userIn = new Scanner(System.in);
         System.out.println("Please input a command: ");
         // Accepts user input and makes decisions
-        String inString = userIn.nextLine();
-        if(inString.toLowerCase() == "e" || inString.toLowerCase()== "events")
+        String inString = userIn.next();
+        if(inString.equals("e") || inString.equals("events"))
         {
             events(); // method call to event listing
         }
-        else if(inString.toLowerCase() == "o" || inString.toLowerCase() == "olympians")
+        else if(inString.equals("o") || inString.equals("olympians"))
         {
             olympians(); // method call to olympians
         }
-        else if(inString.toLowerCase() == "h" || inString.toLowerCase() == "help")
+        else if(inString.equals("h") || inString.equals("help"))
         {
             help(); // method call to help
         }
         else
         {
-            // error return
+            System.out.println("Error: Not a command.");
+            splashscreen();
         }
 
     }
     public static void events()
     {
-    //filler
+        System.out.println(EventName[0]);
     }
     public static void olympians()
     {
@@ -55,12 +59,17 @@ public class Main
         System.out.println("Input 'o' or 'olympians' to view the status of all olympians.");
         System.out.println("You figured out how to get here by typing 'h' or 'help.");
         Scanner userIn = new Scanner(System.in);
-        int helpExit = userIn.nextInt();
-        if (helpExit == 0) {
+        String helpExit = userIn.next();
+        if (helpExit.equals("0"))
+        {
             // end program
-        } else if (helpExit == 1) {
+        }
+        else if (helpExit.equals("1"))
+        {
             splashscreen(); // returns us to the splash screen
-        } else {
+        }
+        else
+        {
             help(); // calls us back to the help menu, this activates because of failed input.
         }
     }
