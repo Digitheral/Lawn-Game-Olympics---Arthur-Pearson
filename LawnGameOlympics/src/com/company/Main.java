@@ -10,6 +10,10 @@ public class Main
     // Main Method for Splash Screen
     public static void main(String[] args)
     {
+        splashscreen(); // Call to splash screen function that way we can cycle through this program
+    }
+    public static void splashscreen()
+    {
         // Prints Splash Screen
         System.out.println("Smith Family Lawn Olympic Games");
         // Initializes input
@@ -45,7 +49,19 @@ public class Main
     }
     public static void help()
     {
-    // filler
+        System.out.println("Welcome to the Help menu.");
+        System.out.println("Input 1 to return to Splash Screen. 0 to end program.");
+        System.out.println("On the splash screen input 'e' or 'events' to view today's events.");
+        System.out.println("Input 'o' or 'olympians' to view the status of all olympians.");
+        System.out.println("You figured out how to get here by typing 'h' or 'help.");
+        Scanner userIn = new Scanner(System.in);
+        int helpExit = userIn.nextInt();
+        if (helpExit == 0) {
+            // end program
+        } else if (helpExit == 1) {
+            splashscreen(); // returns us to the splash screen
+        } else {
+            help(); // calls us back to the help menu, this activates because of failed input.
+        }
     }
-
 }
