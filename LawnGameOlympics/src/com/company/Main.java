@@ -7,8 +7,16 @@ import java.util.Scanner;
 
 public class Main
 {
-    String[] EventName = {"Washoos", "Canjam", "Horseshoes","Cornhole","Ladderball", "Stickgame"}; // This array holds each game name for descriptions later.
-    String [][] OlympianData = {}; // For olympian data in the olympian method.
+    static String[] EventName = {"Washoos", "Canjam", "Horseshoes","Cornhole","Ladderball", "Stickgame"}; // This array holds each game name for descriptions later.
+    static String [][] OlympianData = {
+                                      // First Dimension of the Matrix
+                                      {"Mr.", "Mr.", "Mr.", "Mrs.", "Ms."},
+                                      {"Ms.", "Mrs.", "Mrs.", "Dr.", "Mr."},
+                                      {"Ms.", "Ms.", "Mr.", "Mr.", "Ms."},
+                                      // Second Dimension of the Matrix
+                                      {"John, Male, 25", "Bob, Male, 19", "Brian, Male, 31", "Nancy, Female, 30", "Sara, Female, 20"},
+                                      {"Joy, Female, 12", "Cara, Female, 44", "Nick, Male, 50", "Randy, Male 21", "Adam, Male 70"},
+                                      {"Ann, Female, 19", "Nora, Female, 17", "Kayla, Female, 61", "Josh, Male, 27", "Kristen, Female, 44"}}; // For olympian data in the olympian method.
 
     // Main Method for Splash Screen
     public static void main(String[] args)
@@ -24,6 +32,8 @@ public class Main
         System.out.println("Please input a command: ");
         // Accepts user input and makes decisions
         String inString = userIn.next();
+
+        // Comparing for error-checking this way we don't crash
         if(inString.equals("e") || inString.equals("events"))
         {
             events(); // method call to event listing
@@ -45,11 +55,29 @@ public class Main
     }
     public static void events()
     {
-        System.out.println(EventName[0]);
+        System.out.println("Today's events include:\n");
+        // this loop will iterate through the array so we can display each of today's games
+        for(int i=0;i<6;i++)
+        {
+            System.out.println(EventName[i] + "\n");
+        }
     }
     public static void olympians()
     {
-    // filler
+        System.out.println("Today's Olympians are:\n");
+        // this loop will iterate through the array so we can display each olympian and the data about them
+        for(int i=0;i<15;i++)
+        {
+            for(int j=0;j<15;j++)
+            {
+                if(i==j)
+                {
+                    System.out.println("This is: ");
+                    System.out.println(OlympianData[i][j]);
+                }
+            }
+        }
+        // include nested loop
     }
     public static void help()
     {
