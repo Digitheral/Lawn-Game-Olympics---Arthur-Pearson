@@ -3,20 +3,13 @@
 // CMPT 220 - Fall 2014 Software Development 1
 
 package com.company;
+import javax.lang.model.type.NullType;
 import java.util.Scanner;
 
 public class Main
 {
-    static String[] EventName = {"Washoos", "Canjam", "Horseshoes","Cornhole","Ladderball", "Stickgame"}; // This array holds each game name for descriptions later.
-    static String [][] OlympianData = {
-                                      // First Dimension of the Matrix
-                                      {"Mr.", "Mr.", "Mr.", "Mrs.", "Ms."},
-                                      {"Ms.", "Mrs.", "Mrs.", "Dr.", "Mr."},
-                                      {"Ms.", "Ms.", "Mr.", "Mr.", "Ms."},
-                                      // Second Dimension of the Matrix
-                                      {"John, Male, 25", "Bob, Male, 19", "Brian, Male, 31", "Nancy, Female, 30", "Sara, Female, 20"},
-                                      {"Joy, Female, 12", "Cara, Female, 44", "Nick, Male, 50", "Randy, Male 21", "Adam, Male 70"},
-                                      {"Ann, Female, 19", "Nora, Female, 17", "Kayla, Female, 61", "Josh, Male, 27", "Kristen, Female, 44"}}; // For olympian data in the olympian method.
+    static String[] EventName; // This array holds each game name for descriptions later.
+    static String[][] OlympianData; // Hard code this matrix
 
     // Main Method for Splash Screen
     public static void main(String[] args)
@@ -51,10 +44,10 @@ public class Main
             System.out.println("Error: Not a command.");
             splashscreen();
         }
-
     }
     public static void events()
     {
+        initEvents();
         System.out.println("Today's events include:\n");
         // this loop will iterate through the array so we can display each of today's games
         for(int i=0;i<6;i++)
@@ -62,22 +55,24 @@ public class Main
             System.out.println(EventName[i] + "\n");
         }
     }
+    // We initialize the Events here to the String EventName so it is more local
+    public static void initEvents()
+    {
+        String Game[] = {"Washoos", "Canjam", "Horseshoes","Cornhole","Ladderball", "Stickgame"};
+        EventName = Game;
+    }
     public static void olympians()
     {
+        initOlympians();
         System.out.println("Today's Olympians are:\n");
         // this loop will iterate through the array so we can display each olympian and the data about them
-        for(int i=0;i<15;i++)
-        {
-            for(int j=0;j<15;j++)
-            {
-                if(i==j)
-                {
-                    System.out.println("This is: ");
-                    System.out.println(OlympianData[i][j]);
-                }
-            }
-        }
-        // include nested loop
+        System.out.println(OlympianData[i][j]);
+    }
+    // We initialize the Olympians here for the same reasons we initialized the Events
+    public static void initOlympians()
+    {
+        String Olympians[][] = {{}};
+        OlympianData = Olympians;
     }
     public static void help()
     {
@@ -85,7 +80,7 @@ public class Main
         System.out.println("Input 1 to return to Splash Screen. 0 to end program.");
         System.out.println("On the splash screen input 'e' or 'events' to view today's events.");
         System.out.println("Input 'o' or 'olympians' to view the status of all olympians.");
-        System.out.println("You figured out how to get here by typing 'h' or 'help.");
+        System.out.println("You figured out how to get here by typing 'h' or 'help'.");
         Scanner userIn = new Scanner(System.in);
         String helpExit = userIn.next();
         if (helpExit.equals("0"))
