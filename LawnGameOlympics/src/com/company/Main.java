@@ -2,14 +2,16 @@
 // Arthur Pearson
 // CMPT 220 - Fall 2014 Software Development 1
 
+// All methods are invoked, you can end the program via the HELP menu 'h' -> '0'
+// Methods re-invoke to prevent pre-mature end of program
+
 package com.company;
-import javax.lang.model.type.NullType;
 import java.util.Scanner;
 
 public class Main
 {
     static String[] EventName; // This array holds each game name for descriptions later.
-    static String[][] OlympianData; // Hard code this matrix
+    static String[][] OlympianData; // This array holds the name, sex and age of each olympian as well as how to address them.
 
     // Main Method for Splash Screen
     public static void main(String[] args)
@@ -45,15 +47,20 @@ public class Main
             splashscreen();
         }
     }
+
+    // Event methods
     public static void events()
     {
         initEvents();
-        System.out.println("Today's events include:\n");
+        System.out.println("Today's events include:");
         // this loop will iterate through the array so we can display each of today's games
         for(int i=0;i<6;i++)
         {
-            System.out.println(EventName[i] + "\n");
+            System.out.print(EventName[i] + "\n");
         }
+        System.out.println("Input Anything To Return to Main Menu...");
+        new java.util.Scanner(System.in).nextLine();
+        splashscreen();
     }
     // We initialize the Events here to the String EventName so it is more local
     public static void initEvents()
@@ -61,19 +68,36 @@ public class Main
         String Game[] = {"Washoos", "Canjam", "Horseshoes","Cornhole","Ladderball", "Stickgame"};
         EventName = Game;
     }
+
+    // Olympian methods
     public static void olympians()
     {
         initOlympians();
-        System.out.println("Today's Olympians are:\n");
+        System.out.println("Today's Olympians are: ");
         // this loop will iterate through the array so we can display each olympian and the data about them
-        System.out.println(OlympianData[i][j]);
+        for (int i = 0; i < 15; i++)
+        {
+            for (int j = 0; j < 2; j++)
+            {
+                System.out.print(OlympianData[i][j]);
+            }
+            System.out.print("\n");
+        }
+        System.out.println("Input Anything To Return to Main Menu...");
+        new java.util.Scanner(System.in).nextLine();
+        splashscreen();
     }
     // We initialize the Olympians here for the same reasons we initialized the Events
     public static void initOlympians()
     {
-        String Olympians[][] = {{}};
+        String Olympians[][] = {{"Mr. ", "Brian Smith, Male, 31"}, {"Ms. ", "Carol Smith, Female, 30"}, {"Mr. ", "Kevin Smith, Male, 22"}, {"Mrs. ", "Judy Smith, Female, 15"},
+                                {"Dr. ", "Darren Smith, Male, 44"}, {"Ms. ", "Eileen Smith, Female, 78"}, {"Mr. ", "Greg Smith, Male, 17"}, {"Mr. ", "Billy Smith, Male, 23"},
+                                {"Mrs. ", "Deborah Smith, Female, 20"}, {"Mr. ", "Darren Smith Jr., Male, 12"}, {"Mrs. ", "Sarah Smith, Female, 25"}, {"Ms. ", "Natasha Smith, Female, 7"},
+                                {"Mr. ", "Bob Smith, Male, 33"}, {"Mr. ", "Joseph Smith, Male, 59"}, {"Mr. ", "Nick Smith, Male, 12"}};
         OlympianData = Olympians;
     }
+
+    // Help menu method
     public static void help()
     {
         System.out.println("Welcome to the Help menu.");
