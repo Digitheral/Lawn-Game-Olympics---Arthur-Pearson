@@ -43,7 +43,7 @@ public class Main
         }
         else
         {
-            System.out.println("Error: Not a command.");
+            System.out.println("Error: Not a command. Please refer to help menu by typing 'h' or 'help'.");
             splashscreen();
         }
     }
@@ -59,6 +59,8 @@ public class Main
             System.out.print(EventName[i] + "\n");
         }
         System.out.println("Input Anything To Return to Main Menu...");
+
+        // This scanner is here so we can go back to the splash screen
         new java.util.Scanner(System.in).nextLine();
         splashscreen();
     }
@@ -84,6 +86,8 @@ public class Main
             System.out.print("\n");
         }
         System.out.println("Input Anything To Return to Main Menu...");
+
+        // This scanner is here so we can go back to the splash screen
         new java.util.Scanner(System.in).nextLine();
         splashscreen();
     }
@@ -101,23 +105,21 @@ public class Main
     public static void help()
     {
         System.out.println("Welcome to the Help menu.");
-        System.out.println("Input 1 to return to Splash Screen. 0 to end program.");
+        System.out.println("Input any command to return to Splash Screen. 0 to end program.");
         System.out.println("On the splash screen input 'e' or 'events' to view today's events.");
         System.out.println("Input 'o' or 'olympians' to view the status of all olympians.");
         System.out.println("You figured out how to get here by typing 'h' or 'help'.");
+
+        // This scanner allows for the input of the help menu
         Scanner userIn = new Scanner(System.in);
         String helpExit = userIn.next();
+
+        // This condition ends this program if 0 is input
         if (helpExit.equals("0"))
         {
-            // end program
+            System.exit(0);
         }
-        else if (helpExit.equals("1"))
-        {
-            splashscreen(); // returns us to the splash screen
-        }
-        else
-        {
-            help(); // calls us back to the help menu, this activates because of failed input.
-        }
+        // If condition fails, return to splash screen
+        splashscreen();
     }
 }
